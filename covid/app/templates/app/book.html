@@ -1,0 +1,28 @@
+{% extends "app/base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+{{ form.errors }}
+<form method='post'>
+        {% csrf_token %}
+
+{% for hospital in hospitals %}
+
+<div>
+  <div>
+    <h5>{{hospital.name}}</h5>
+    <p>{{hospital.address}}</p>
+    <p>Available Vaccine: {{hospital.available_Vaccine}}</p>
+    <p>Total Vaccine slots: {{hospital.total_Vaccine}}</p>
+    {% if hospital.available_Vaccine > 0 %}
+    <input type="hidden" name="hospital" value="{{hospital.id}}">
+    <input type="submit" value="Submit">
+    {% else %}
+    <p>No available Slots</p>
+    {% endif %}
+  </div>
+</div>
+{% endfor %}
+</form>
+
+{% endif %}
+{% endblock %}

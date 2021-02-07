@@ -1,0 +1,22 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Allotment Status</h1><br><br>
+<table>
+    <tr><td>Status: Confirmed <td></tr>
+    <tr><td>Confirmation Time: {{booked_hospital.confirmtime}} IST <td></tr>
+    <tr><td><hr></td></tr>
+    <tr><td>User ID: {{filled_form.user}}</td></tr>
+    <tr><td>Booking Date: {{booked_hospital.time}}</td></tr>
+    <tr><td>Patient Name: {{user.first_name}} {{user.last_name}}<td></tr>
+    <tr><td>Age: {{filled_form.age}} yrs<td></tr>
+    <tr><td><hr></td></tr>
+    <tr><th>Hospital Details <th></tr>
+    <tr><td>Hospital: {{hospital.name}} <td></tr>
+    <tr><td>Address: {{hospital.address}} <td></tr>
+    <tr><td>Phone: {{hospital.phone}} <td></tr>
+</table>
+<br>
+{%endif%}
+{% endblock %}
